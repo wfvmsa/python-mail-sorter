@@ -7,8 +7,8 @@ import datetime
 import re
 import base64
 
-EMAIL = "pytestcoding@gmail.com"
-PASSWD = "pypypy666"
+EMAIL = "mail@gmail.com"
+PASSWD = "password"
 MAIL_SERVER = "imap.gmail.com"
 MAIL_PORT = 993
 
@@ -48,7 +48,7 @@ def tem_devops(sub_message, email_date, email_from, email_subject ):
         done = 'yes'
         print 'ENCONTRADO TERMO SELECIONADO', match.group()
         import MySQLdb
-        db = MySQLdb.connect(host="192.168.2.108", user="python", passwd="pythonpass",db="email")
+        db = MySQLdb.connect(host="DATABASE IP", user="python", passwd="pythonpass",db="email")
         cur2 = db.cursor()
         cur2.execute("INSERT INTO devops (datamail, origem, assunto) VALUES (%s, %s, %s)", (email_date, email_from, email_subject))
         
