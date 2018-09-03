@@ -46,15 +46,14 @@ def tem_devops(sub_message, email_date, email_from, email_subject ):
     match = re.search(r'.*devops.*', sub_message , re.IGNORECASE)
     if match:
         done = 'yes'
-        print 'ENCONTRADO TERMO SELECIONADO', match.group()
         import MySQLdb
         db = MySQLdb.connect(host="DATABASE IP", user="python", passwd="pythonpass",db="email")
         cur2 = db.cursor()
-        cur2.execute("INSERT INTO devops (datamail, origem, assunto) VALUES (%s, %s, %s)", (email_date, email_from, email_subject))
+        cur2.execute("INSERT INTO devops (datamail, origem, assunto) VALUES (%s, %s, %s);", (email_date, email_from, email_subject))
         
     else:
         done = 'no'
-        print 'TERMO NÃO ENCONTRADO'
+       
 
     return done
 
